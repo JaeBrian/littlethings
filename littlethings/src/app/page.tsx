@@ -1,17 +1,13 @@
 'use client';
 import './globals.css';
 import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 export default function Home() {
-  // const [message, setMessage] = useState('loading');
-  // useEffect(() => {
-  //   fetch('http://localhost:8080/api/home')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setMessage(data.message);
-  //     });
-  // }, []);
+  const [activeButton, setActiveButton] = useState('');
+  const handleButtonClick = (button: 'weekly' | 'monthly') => {
+    setActiveButton(button);
+  };
 
   return (
     <>
@@ -19,10 +15,30 @@ export default function Home() {
         LITTLE THINGS
       </div>
       <div className="flex mt-40 justify-center items-center space-x-10">
-        <button className="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-4 p-6 border border-green-500 hover:border-transparent rounded w-1/5">
+        <button
+          className={clsx(
+            'bg-transparent font-semibold py-4 px-6 border rounded w-1/5',
+            {
+              'bg-green-500 text-white border-transparent':
+                activeButton === 'weekly',
+              'text-green-700 border-green-500': activeButton !== 'weekly',
+            }
+          )}
+          onClick={() => handleButtonClick('weekly')}
+        >
           WEEKLY
         </button>
-        <button className="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-4 px-6 border border-green-500 hover:border-transparent rounded w-1/5">
+        <button
+          className={clsx(
+            'bg-transparent font-semibold py-4 px-6 border rounded w-1/5',
+            {
+              'bg-green-500 text-white border-transparent':
+                activeButton === 'monthly',
+              'text-green-700 border-green-500': activeButton !== 'monthly',
+            }
+          )}
+          onClick={() => handleButtonClick('monthly')}
+        >
           MONTHLY
         </button>
       </div>
