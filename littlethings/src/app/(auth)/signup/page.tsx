@@ -1,8 +1,39 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { db } from '@/db';
+import { users } from '@/db/schema';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function SignUp() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignUp = async (e: any) => {
+    e.preventDefault(); // Prevent form from refreshing the page
+
+    try {
+      const id = uuidv4();
+      // Inserting a new user into the 'users' table using Drizzle ORM
+      await db
+        .insert(users)
+        .values({
+          id: id,
+          username: username,
+          email: email,
+          password: password, // Consider hashing the password before saving it for security
+        })
+        .execute();
+
+      alert('User registered successfully!');
+      // You might want to redirect the user or clear the form here
+    } catch (error) {
+      console.error('Failed to register user:', error);
+      alert('Failed to register user');
+    }
+  };
+
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
@@ -40,6 +71,9 @@ export default function SignUp() {
               type="text"
               className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Username"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
             />
           </div>
 
@@ -65,6 +99,9 @@ export default function SignUp() {
               type="email"
               className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Email address"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </div>
 
@@ -90,6 +127,9 @@ export default function SignUp() {
               type="password"
               className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
 
@@ -115,6 +155,9 @@ export default function SignUp() {
               type="password"
               className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Confirm Password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
 
