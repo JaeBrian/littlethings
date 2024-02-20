@@ -1,9 +1,9 @@
-'use client';
+// 'use client';
 import './globals.css';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
-export default function Home() {
+export default async function Home() {
   const [activeButton, setActiveButton] = useState('');
   const handleButtonClick = (button: 'weekly' | 'monthly') => {
     setActiveButton(button);
