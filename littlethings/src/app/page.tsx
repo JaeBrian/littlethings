@@ -1,71 +1,51 @@
-// 'use client';
+'use client';
 import './globals.css';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-
-export default async function Home() {
-  const [activeButton, setActiveButton] = useState('');
-  const handleButtonClick = (button: 'weekly' | 'monthly') => {
-    setActiveButton(button);
-  };
-
+import Link from 'next/link';
+export default function Home() {
   return (
-    <>
-      <div className="text-pink-100 text-center text-5xl mt-20">
-        LITTLE THINGS
+    <div className="w-full min-h-screen bg-white flex justify-center items-center">
+      {/* Glassy Card Background Starts Here */}
+      <div className="bg-white/40 backdrop-blur-lg border border-gray-200 rounded-md shadow-lg overflow-hidden p-10 h-3/5 w-2/5">
+        {' '}
+        {/* Set max-width for smaller screens */}
+        <h2 className="text-custom-gray mb-12 text-center text-3xl font-extrabold">
+          LITTLETHINGS
+        </h2>
+        <form>
+          <div className="mb-4">
+            <input
+              id="email"
+              type="text"
+              name="email"
+              placeholder="Email"
+              className="py-2 px-3 border border-gray-300 focus:border-gray-300 focus:outline-none focus:ring focus:ring-gray-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="py-2 px-3 border border-gray-300 focus:border-gray-300 focus:outline-none focus:ring focus:ring-gray-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
+            />
+          </div>
+
+          <div className="mt-6">
+            <button className="w-full inline-flex items-center justify-center px-4 py-2 bg-custom-gray border border-transparent rounded-md font-semibold capitalize text-white hover:bg-gray-700 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
+              Sign In
+            </button>
+          </div>
+          <div className="mt-6 text-center">
+            <a href="/signup" className="text-black hover:underline">
+              Create An Account
+            </a>
+          </div>
+        </form>
       </div>
-      <div className="flex mt-40 justify-center items-center space-x-10">
-        <button
-          className={clsx(
-            'bg-transparent font-semibold py-4 px-6 border rounded w-1/5',
-            {
-              'bg-green-500 text-white border-transparent':
-                activeButton === 'weekly',
-              'text-green-700 border-green-500': activeButton !== 'weekly',
-            }
-          )}
-          onClick={() => handleButtonClick('weekly')}
-        >
-          WEEKLY
-        </button>
-        <button
-          className={clsx(
-            'bg-transparent font-semibold py-4 px-6 border rounded w-1/5',
-            {
-              'bg-green-500 text-white border-transparent':
-                activeButton === 'monthly',
-              'text-green-700 border-green-500': activeButton !== 'monthly',
-            }
-          )}
-          onClick={() => handleButtonClick('monthly')}
-        >
-          MONTHLY
-        </button>
-      </div>
-      <div className="flex justify-center items-center mt-20">
-        <div className="grid grid-cols-4 gap-3 mb-20">
-          {/* Row 1 */}
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          {/* Row 2 */}
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          {/* Row 3 */}
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          {/* Row 4 */}
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-        </div>
-      </div>
-    </>
+      {/* Glassy Card Background Ends Here */}
+    </div>
   );
 }

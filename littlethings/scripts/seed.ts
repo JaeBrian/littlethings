@@ -3,7 +3,7 @@ import { NewUser, insertUser } from '../lib/db';
 async function main() {
   const newUser: NewUser = {
     email: 'foo@example.com',
-    image: 'some image url',
+    password: 'random password',
     name: 'foo',
   };
   const res = await insertUser(newUser);

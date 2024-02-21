@@ -9,7 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'pastel-green': '#C4DEA4',
+        'cream-white': '#FFFFFF',
+        'light-beige': '#ESE4E0',
+        'med-beige': '#DACFC6',
+        'dark-beige': '#BDB2A7',
+        'custom-brown': '#926B65',
+        'custom-gray': '#595552',
       },
     },
   },
