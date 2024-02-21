@@ -1,15 +1,34 @@
 'use client';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { getPostByUserId } from '../../../lib/db';
 
-export default function Home() {
+interface Post {
+  id: number;
+  title: string;
+  content: string;
+}
+
+interface PostProps {
+  sharonPosts: Post[];
+}
+
+export default function Home({ sharonPosts }: PostProps) {
   const [activeButton, setActiveButton] = useState('');
+  console.log('hello', sharonPosts);
   const handleButtonClick = (button: 'weekly' | 'monthly') => {
     setActiveButton(button);
   };
-
   return (
     <>
+      <div>
+        {/* {sharonPosts.map((post: Post) => (
+          <div key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.content}</p>
+          </div>
+        ))} */}
+      </div>
       <div className="text-pink-100 text-center text-5xl mt-20">
         LITTLE THINGS
       </div>
@@ -44,21 +63,6 @@ export default function Home() {
       <div className="flex justify-center items-center mt-20">
         <div className="grid grid-cols-4 gap-3 mb-20">
           {/* Row 1 */}
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          {/* Row 2 */}
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          {/* Row 3 */}
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          <div className="w-48 aspect-square border-4"></div>
-          {/* Row 4 */}
           <div className="w-48 aspect-square border-4"></div>
           <div className="w-48 aspect-square border-4"></div>
           <div className="w-48 aspect-square border-4"></div>

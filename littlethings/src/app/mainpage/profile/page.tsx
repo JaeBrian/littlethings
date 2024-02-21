@@ -1,8 +1,10 @@
 import { getPostByUserId } from '../../../../lib/db';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 
 export default async function Profile() {
   const brian = await getPostByUserId(4);
   const sharon = await getPostByUserId(5);
+  console.log('here', sharon);
 
   return (
     <>
