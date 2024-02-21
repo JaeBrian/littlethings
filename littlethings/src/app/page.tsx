@@ -39,9 +39,9 @@ export default function Home() {
             </button>
           </div>
           <div className="mt-6 text-center">
-            <a href="/signup" className="text-black hover:underline">
+            <Link href="/signup" className="text-black hover:underline">
               Create An Account
-            </a>
+            </Link>
           </div>
         </form>
       </div>
