@@ -4,7 +4,7 @@ async function main() {
   const newUser: NewUser = {
     email: 'foo@example.com',
     password: 'random password',
-    name: 'foo',
+    username: 'foo',
   };
   const res = await insertUser(newUser);
   console.log('insert user success', res);

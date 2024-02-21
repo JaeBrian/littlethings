@@ -12,8 +12,8 @@ import {
 export const users = pgTable(
   'users',
   {
-    id: bigserial('id', { mode: 'number' }).primaryKey(),
-    name: text('name').notNull(),
+    id: serial('id').primaryKey(),
+    username: text('username').notNull(),
     email: text('email').notNull(),
     password: text('password').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
