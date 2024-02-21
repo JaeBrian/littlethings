@@ -1,8 +1,11 @@
 import '../lib/config';
 import { drizzle } from 'drizzle-orm/vercel-postgres';
 import { sql } from '@vercel/postgres';
-import { users } from './schema';
+import { users, posts, littlethings } from './schema';
 import * as schema from './schema';
+import { eq } from 'drizzle-orm';
+
+// import { sql } from 'drizzle-orm';
 
 export const db = drizzle(sql, { schema });
 
@@ -18,7 +21,13 @@ export const insertUser = async (user: NewUser) => {
   return db.insert(users).values(user).returning();
 };
 
-export const getUsers2 = async () => {
-  const result = await db.query.users.findMany();
+export type NewPost = typeof posts.$inferInsert;
+
+export const insertPost = async (post: NewPost) => {
+  return db.insert(posts).values(post).returning();
+};
+
+export const getPostByUserId = async (userId: number) => {
+  const result = await db.select().from(posts).where(eq(posts.user_id, userId));
   return result;
 };
