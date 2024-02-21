@@ -6,10 +6,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div className="w-full min-h-screen bg-white flex justify-center items-center">
-      {/* Glassy Card Background Starts Here */}
       <div className="bg-white/40 backdrop-blur-lg border border-gray-200 rounded-md shadow-lg overflow-hidden p-10 h-3/5 w-2/5">
-        {' '}
-        {/* Set max-width for smaller screens */}
         <h2 className="text-custom-gray mb-12 text-center text-3xl font-extrabold">
           LITTLETHINGS
         </h2>
@@ -45,7 +42,6 @@ export default function Home() {
           </div>
         </form>
       </div>
-      {/* Glassy Card Background Ends Here */}
     </div>
   );
 }
