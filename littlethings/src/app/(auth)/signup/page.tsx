@@ -12,10 +12,24 @@ export default function SignUp() {
           <div className="flex items-center justify-center mt-6">
             <a
               href="#"
-              className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white"
+              className="w-2/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white"
             >
-              sign up
+              sign up for littleThings
             </a>
+          </div>
+          <div className="relative flex items-start mt-8">
+            <input
+              type="text"
+              className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              placeholder="First Name"
+            />
+          </div>
+          <div className="relative flex items-start mt-8">
+            <input
+              type="text"
+              className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              placeholder="LastName"
+            />
           </div>
 
           <div className="relative flex items-start mt-8">
@@ -48,7 +62,7 @@ export default function SignUp() {
             </button>
 
             <div className="no-underline text-sm hover:underline mt-6 text-center ">
-              <Link className="text-white" href="/login" passHref>
+              <Link className="text-white" href="/" passHref>
                 Already have an account?
               </Link>
             </div>

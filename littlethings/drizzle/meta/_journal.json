@@ -36,6 +36,13 @@
       "when": 1708502812641,
       "tag": "0004_wealthy_swordsman",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1708612323513,
+      "tag": "0005_special_exiles",
+      "breakpoints": true
     }
   ]
 }
