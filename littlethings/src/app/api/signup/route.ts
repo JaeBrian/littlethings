@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    await db
+    const newUser = await db
       .insert(users)
       .values({
         firstname: firstname,
@@ -40,10 +40,10 @@ export async function POST(request: Request) {
         password: hashedPassword,
         email: email,
       })
-      .execute();
+      .returning();
 
     return NextResponse.json(
-      { message: 'User created successfully' },
+      { message: 'User created successfully', id: newUser[0].id },
       { status: 200 }
     );
   } catch (error) {

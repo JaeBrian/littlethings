@@ -1,19 +1,29 @@
 import { getPostByUserId } from '../../../../lib/db';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 
-export default async function Profile() {
-  const sharon = await getPostByUserId(5);
-  console.log('here', sharon);
+export async function getData() {
+  try {
+    const res = await getPostByUserId(7);
+    return res;
+  } catch (error) {
+    console.log('error', error);
+    throw new Error('failed to fetch');
+  }
+}
+
+export default async function Profile({}) {
+  const posts = await getData();
+  console.log('here', posts);
 
   return (
     <>
-      {sharon.map((post) => (
+      {posts.map((post) => (
         <div
           key={post.id}
           className="text-black flex flex-col justify-center items-center"
         >
-          <div key={post.id}>{post.title}</div>
-          <div key={post.id}>{post.content}</div>
+          <div>{post.title}</div>
+          <div>{post.content}</div>
         </div>
       ))}
     </>
