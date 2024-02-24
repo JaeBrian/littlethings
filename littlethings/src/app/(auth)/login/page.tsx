@@ -1,4 +1,41 @@
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 export default function Login() {
+  const [username, setUsername] = useState('');
+  const [passowrd, setPassord] = useState('');
+
+  const router = useRouter();
+
+  const loginHandler = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    const body = {
+      username: username,
+      password: passowrd,
+    };
+
+    try {
+      const response = await fetch('api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'something went wrong');
+      }
+
+      router.push(`/mainpage/${data.id}`);
+      console.log('login in successful', data[0]);
+    } catch (error) {
+      console.error('login failed', error);
+    }
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

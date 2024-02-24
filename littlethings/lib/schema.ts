@@ -5,7 +5,6 @@ import {
   timestamp,
   uniqueIndex,
   bigint,
-  bigserial,
   index,
 } from 'drizzle-orm/pg-core';
 
@@ -13,6 +12,8 @@ export const users = pgTable(
   'users',
   {
     id: serial('id').primaryKey(),
+    firstname: text('firstname').notNull(),
+    lastname: text('lastname').notNull(),
     username: text('username').notNull(),
     email: text('email').notNull(),
     password: text('password').notNull(),
@@ -54,6 +55,7 @@ export const posts = pgTable(
     user_id: bigint('user_id', { mode: 'number' })
       .notNull()
       .references(() => users.id),
+    frequency: text('frequency').notNull(),
     title: text('title').notNull(),
     content: text('content').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
