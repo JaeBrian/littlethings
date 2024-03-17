@@ -25,7 +25,7 @@ export const findById = async (userId: number) => {
 
 async function post() {
   try {
-    const user = await findById(8);
+    const user = await findById(6);
     if (!user.id) {
       console.log('user not found');
       return;
@@ -33,7 +33,7 @@ async function post() {
     const newPost: NewPost = {
       frequency: 'monthly',
       user_id: user.id,
-      title: 'eat',
+      title: 'travel',
       content: 'chicken',
     };
     const insertedPost = await insertPost(newPost);
