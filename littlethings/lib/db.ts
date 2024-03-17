@@ -31,3 +31,8 @@ export const getPostByUserId = async (userId: number) => {
   const result = await db.select().from(posts).where(eq(posts.user_id, userId));
   return result;
 };
+
+export const getUserById = async (userId: number) => {
+  const result = await db.select().from(users).where(eq(users.id, userId));
+  return result.length > 0 ? result[0] : null;
+};
